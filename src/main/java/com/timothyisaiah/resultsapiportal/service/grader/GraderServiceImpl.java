@@ -17,4 +17,11 @@ public class GraderServiceImpl implements GraderService{
     public List<Users> getAllUsers(){
         return graderRepository.findAllUsers();
     }
+    
+    @Override
+    public List<Object[]> getUserByRegistrationNumber(String registration_number){
+        return graderRepository.findUserByRegistrationNumber(registration_number);
+    }
+
+
 }
