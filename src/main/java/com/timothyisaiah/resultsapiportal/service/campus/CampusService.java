@@ -10,7 +10,7 @@ import com.timothyisaiah.resultsapiportal.entity.campus.Egsubjects;
 
 public interface CampusService {
     List<Eglearners> getAllEglearners();
-    Egclasses getClassByClassid(Long class_id);
+    Integer getClassByClassid(Integer class_id);
     List<Object[]> getAttendanceByRegistrationNumber(String registration_number);
-    Egsubjects getSubjectBySubject_id(Long subject_id);
+    List<Object[]> getSubjectBySubject_id(Integer subject_id);
 }

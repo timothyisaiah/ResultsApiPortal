@@ -35,13 +35,13 @@ public class CampusServiceImpl implements CampusService {
     } 
     
     @Override
-    public Egclasses getClassByClassid(Long class_id){
+    public Integer getClassByClassid(Integer class_id){
         return egclassesRepository.findByClass_id(class_id);
     } 
 
 
     @Override
-    public Egsubjects getSubjectBySubject_id(Long subject_id){
+    public List<Object[]> getSubjectBySubject_id(Integer subject_id){
         return egsubjectsRepository.findBySubject_id(subject_id);
     } 
 
