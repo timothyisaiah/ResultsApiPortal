@@ -10,3 +10,8 @@ public interface EgclassesRepository extends JpaRepository<Egclasses,Integer>{
     @Query(value = "SELECT c.subject_id FROM egclasses c WHERE c.class_id=:class_idParam", nativeQuery = true)
     Integer findByClass_id(@Param("class_idParam") Integer class_id);
 }
+
+public interface EgclassesRepository extends JpaRepository<Egclasses,Integer>{
+    @Query(value = "SELECT c.subject_id FROM egclasses c WHERE c.class_id=:class_idParam", nativeQuery = true)
+    Integer findByClass_id(@Param("class_idParam") Integer class_id);
+}

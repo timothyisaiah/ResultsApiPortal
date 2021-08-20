@@ -50,4 +50,9 @@ public class CampusServiceImpl implements CampusService {
         return campusRepository.findAllEglearners();
     } 
 
+    @Override
+    public Integer getClassTotal(Integer class_id){
+        return egclassesRepository.findByClass_id(class_id);
+    } 
+
 }

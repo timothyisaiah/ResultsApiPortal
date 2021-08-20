@@ -40,6 +40,8 @@ public class CampusController {
                 attendanceDetails.put("numberoftimesattended", attend[0]);
                 Integer classid = (Integer) attend[1];
                 Integer subjectid = campusService.getClassByClassid(classid);
+                Integer totalClasses = campusService.getClassTotal(classid);
+                attendanceDetails.put("requiredmaximumattendance", totalClasses);
                 List<Object[]> subjectDetails = campusService.getSubjectBySubject_id(subjectid);
                 attendanceDetails.put("subjectName", subjectDetails.get(0)[0]);
                 attendanceDetails.put("subjectCode", subjectDetails.get(0)[1]);
