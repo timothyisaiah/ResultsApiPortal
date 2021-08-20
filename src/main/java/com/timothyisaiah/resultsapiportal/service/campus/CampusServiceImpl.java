@@ -9,6 +9,7 @@ import com.timothyisaiah.resultsapiportal.entity.campus.Egsubjects;
 import com.timothyisaiah.resultsapiportal.repository.campus.CampusRepository;
 import com.timothyisaiah.resultsapiportal.repository.campus.EgclassesRepository;
 import com.timothyisaiah.resultsapiportal.repository.campus.EglessonAttendanceRepository;
+import com.timothyisaiah.resultsapiportal.repository.campus.EgsessionsRepository;
 import com.timothyisaiah.resultsapiportal.repository.campus.EgsubjectsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,14 @@ public class CampusServiceImpl implements CampusService {
     EgclassesRepository egclassesRepository;
 
     @Autowired
+    public
     EglessonAttendanceRepository eglessonAttendanceRepository;
 
     @Autowired
     EgsubjectsRepository egsubjectsRepository;
 
+    @Autowired
+    EgsessionsRepository egsessionsRepository;
 
     @Override
     public List<Object[]> getAttendanceByRegistrationNumber(String registration_number){
@@ -49,5 +53,25 @@ public class CampusServiceImpl implements CampusService {
     public List<Eglearners> getAllEglearners(){
         return campusRepository.findAllEglearners();
     } 
+
+    @Override
+    public Integer getClassTotal(Integer learner_id,Integer class_id){
+        return egsessionsRepository.findByClass_total(learner_id,class_id);
+    } 
+
+    @Override
+    public Integer getLearnerId(String registration){
+        return eglessonAttendanceRepository.findByTheLearnerId(registration);
+    }
+
+    @Override
+    public List<Object[]>  getClasses(Integer learner_id){
+        return egsessionsRepository.findClasses(learner_id);
+    } 
+
+    @Override
+    public Integer classesAttended(Integer learner_id, Integer class_id){
+        return eglessonAttendanceRepository.findByLearnerIdAndRegistration(learner_id,class_id);
+    }
 
 }

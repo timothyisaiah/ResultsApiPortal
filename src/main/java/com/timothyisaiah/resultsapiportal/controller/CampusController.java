@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.timothyisaiah.resultsapiportal.entity.campus.Eglearners;
-import com.timothyisaiah.resultsapiportal.entity.campus.Eglesson_attendance;
 import com.timothyisaiah.resultsapiportal.service.campus.CampusService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +32,23 @@ public class CampusController {
         registration_number = registration_number.replace("-", "/");
         List<Map> attendenceList = new ArrayList<>();
         Map<String,Object> attendanceDetails;
-        List<Object[]> attendences = campusService.getAttendanceByRegistrationNumber(registration_number);
-        if(attendences != null){
-            for(Object[] attend: attendences){
+        /////////////search learner id of a given student//////////
+        Integer learnerid = campusService.getLearnerId(registration_number);
+        //////////////Retrieve classes attended by the student////////////
+        List<Object[]> classes = campusService.getClasses(learnerid);
+        if(classes != null){
+            for(Object[] attend: classes){
                 attendanceDetails = new HashMap<>();
-                attendanceDetails.put("numberoftimesattended", attend[0]);
-                Integer classid = (Integer) attend[1];
+                Integer classid = (Integer) attend[0];
+                // get total number classes attended by a given student
+                Integer numberoflessonsattended = campusService.classesAttended(learnerid,Integer.parseInt(attend[0].toString()));
+                attendanceDetails.put("numberoftimesattended",numberoflessonsattended);
+                /////////////////Get subject id ///////////////////////////
                 Integer subjectid = campusService.getClassByClassid(classid);
+                /////////////////Get total classes to be attended///////////////
+                Integer totalClasses = campusService.getClassTotal(learnerid,classid);
+                attendanceDetails.put("requiredmaximumattendance", totalClasses);
+                ////////////////Get Subject Details /////////////////////////
                 List<Object[]> subjectDetails = campusService.getSubjectBySubject_id(subjectid);
                 attendanceDetails.put("subjectName", subjectDetails.get(0)[0]);
                 attendanceDetails.put("subjectCode", subjectDetails.get(0)[1]);
