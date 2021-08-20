@@ -13,4 +13,8 @@ public interface CampusService {
     Integer getClassByClassid(Integer class_id);
     List<Object[]> getAttendanceByRegistrationNumber(String registration_number);
     List<Object[]> getSubjectBySubject_id(Integer subject_id);
+    Integer getClassTotal(Integer learner_id ,Integer class_id);
+    Integer getLearnerId(String registration_number);
+    List<Object[]> getClasses(Integer learner_id);
+    Integer classesAttended(Integer learner_id, Integer class_id);
 }

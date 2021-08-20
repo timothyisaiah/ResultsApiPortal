@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface CampusRepository extends JpaRepository<Eglearners,Integer> {
     @Query("SELECT p FROM Eglearners p")
     List<Eglearners> findAllEglearners();
+    
 }
