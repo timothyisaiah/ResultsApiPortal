@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @ToString
 @Data
 @Builder
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
+//@AllArgsConstructor(access = AccessLevel.PACKAGE)
+//@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Eglearners {
     @Id
     private Long learnerid;

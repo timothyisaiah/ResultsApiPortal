@@ -22,8 +22,8 @@ import javax.persistence.Table;
 @ToString
 @Data
 @Builder
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
+//@AllArgsConstructor(access = AccessLevel.PACKAGE)
+//@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Egclasses {
     @Id
     private Long class_id;
