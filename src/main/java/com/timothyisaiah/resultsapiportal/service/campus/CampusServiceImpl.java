@@ -74,4 +74,8 @@ public class CampusServiceImpl implements CampusService {
         return eglessonAttendanceRepository.findByLearnerIdAndRegistration(learner_id,class_id);
     }
 
+    @Override
+    public Integer updatelearnerpassword(String registration_number, String password){
+        return campusRepository.updateLearnerPassword(registration_number,password);
+    }
 }

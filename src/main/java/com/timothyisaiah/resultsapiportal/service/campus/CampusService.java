@@ -17,4 +17,5 @@ public interface CampusService {
     Integer getLearnerId(String registration_number);
     List<Object[]> getClasses(Integer learner_id);
     Integer classesAttended(Integer learner_id, Integer class_id);
+    Integer updatelearnerpassword(String registration_number, String password);
 }

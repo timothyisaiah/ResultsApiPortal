@@ -58,4 +58,22 @@ public class CampusController {
 
         return new ResponseEntity<>(attendenceList, HttpStatus.OK);
     }
+
+    @GetMapping("/updatepassword/{registrationnumber}/{password}")
+    public String updatepassword(@PathVariable String registration_number, @PathVariable String password){
+
+        registration_number = registration_number.replace("-", "/");
+        password = password.replace("-", "/");
+        // //Update In Grader
+        // Integer columnsUpdated = graderService.updateuserpassword(registration_number, password);
+        // if(columnsUpdated > 0){
+        //     System.out.println("Grader Table Successfully Updated");
+        // }       
+        //Update In Campus
+        Integer columnsUpdated = campusService.updatelearnerpassword(registration_number, password);
+        if(columnsUpdated > 0){
+            System.out.println("Campus Table Successfully Updated");
+        }
+        return "success";
+    }
 }

@@ -23,5 +23,9 @@ public class GraderServiceImpl implements GraderService{
         return graderRepository.findUserByRegistrationNumber(registration_number);
     }
 
+    @Override
+    public Integer updateuserpassword(String registration_number, String password){
+        return graderRepository.updateUserPassword(registration_number,password);
+    }
 
 }
